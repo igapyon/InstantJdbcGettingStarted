@@ -15,7 +15,17 @@ public class Chapter01 {
         System.err.println("Hello JDBC: End.");
     }
 
-    public static void proc01() throws SQLException, ClassNotFoundException {
+    /**
+     * JDBC 接続を最初に試みます。 
+     * 
+     * <ul>
+     * <li>この処理が失敗する場合は、JDBC にかかわる操作が一切できません。</li>
+     * <li>この Getting Started では Maven の Dependency に h2 を追加することにより JDBC 接続を可能にします。</li>
+     * </ul>
+     * 
+     * @throws SQLException SQL例外が発生した場合.
+     */
+    public static void proc01() throws SQLException {
         System.err.println("trace: Connecting JDBC...");
         try (Connection conn = DriverManager.getConnection("jdbc:h2:~/target/test")) {
             System.err.println("trace: JDBC Connected.");
@@ -23,7 +33,12 @@ public class Chapter01 {
         }
     }
 
-    public static void proc02() throws SQLException, ClassNotFoundException {
+    /**
+     * JDBC 接続に成功したので、JDBC の各種情報を取得します。
+     * 
+     * @throws SQLException SQL例外が発生した場合.
+     */
+    public static void proc02() throws SQLException {
         System.err.println("trace: Connecting JDBC...");
         try (Connection conn = DriverManager.getConnection("jdbc:h2:~/target/test")) {
             System.err.println("trace: JDBC Connected.");
