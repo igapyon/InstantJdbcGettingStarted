@@ -5,6 +5,22 @@ import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * 前提
+ * 
+ * <p>Environment</p>
+ * <ul>
+ * <li>Java 11 or later</li>
+ * <li>h2 database based</li>
+ * <li>Apache Maven based</li>
+ * </ul>
+ * 
+ * <p>Skill</p>
+ * <ul>
+ * <li>Java basic skill.</li>
+ * <li>SQL basic skill.</li>
+ * </ul>
+ */
 public class Chapter01 {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         System.err.println("Hello JDBC: Begin.");
@@ -16,11 +32,13 @@ public class Chapter01 {
     }
 
     /**
-     * JDBC 接続を最初に試みます。 
+     * JDBC 接続を最初に試みます。
      * 
      * <ul>
+     * <li>JDBC はじめの一歩は、java.sql.Connection のインスタンスを取得することです。</li>
      * <li>この処理が失敗する場合は、JDBC にかかわる操作が一切できません。</li>
-     * <li>この Getting Started では Maven の Dependency に h2 を追加することにより JDBC 接続を可能にします。</li>
+     * <li>この Getting Started では Maven の Dependency に h2 を追加することにより JDBC
+     * 接続を可能にします。</li>
      * </ul>
      * 
      * @throws SQLException SQL例外が発生した場合.
