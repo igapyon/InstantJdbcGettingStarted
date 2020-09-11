@@ -8,14 +8,18 @@ import java.sql.SQLException;
 /**
  * 前提
  * 
- * <p>Environment</p>
+ * <p>
+ * Environment
+ * </p>
  * <ul>
  * <li>Java 11 or later</li>
  * <li>h2 database based</li>
  * <li>Apache Maven based</li>
  * </ul>
  * 
- * <p>Skill</p>
+ * <p>
+ * Skill
+ * </p>
  * <ul>
  * <li>Java basic skill.</li>
  * <li>SQL basic skill.</li>
@@ -45,7 +49,7 @@ public class Chapter01 {
      */
     public static void proc01() throws SQLException {
         System.err.println("trace: Connecting JDBC...");
-        try (Connection conn = DriverManager.getConnection("jdbc:h2:~/target/test")) {
+        try (Connection conn = DriverManager.getConnection("jdbc:h2:./target/test")) {
             System.err.println("trace: JDBC Connected.");
 
         }
@@ -58,7 +62,7 @@ public class Chapter01 {
      */
     public static void proc02() throws SQLException {
         System.err.println("trace: Connecting JDBC...");
-        try (Connection conn = DriverManager.getConnection("jdbc:h2:~/target/test")) {
+        try (Connection conn = DriverManager.getConnection("jdbc:h2:./target/test")) {
             System.err.println("trace: JDBC Connected.");
 
             System.err.println("trace: Show JDBC meta.");
