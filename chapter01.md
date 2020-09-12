@@ -2,9 +2,18 @@
 
 ## 前提
 
-- Java 11 or later
-- h2 database based
-- maven based
+このコンテンツは chapter 0 前提のもとに書かれています。
+
+## この chapter の内容
+
+この chapter では、とにかくさっさと java.sql.Connection インスタンスの取得を目指します。
+
+- java.sql.Connection は JDBC を操作するために最初に必要になるものであるためです。
+- 前提にあるように、h2 database の java.sql.Connection を取得します。
+- h2 database ではローカル DB のパスを指定するだけでリレーショナルデータベースがすばやく利用できる機能があり、これが実用的であると同時に JDBC 入門にも好適なのです。
+- ここでは、単純 JDBC Connection の取得のみ話題とし、コネクションプールや JDBC Driver の Type などの話題は端折ります。
+
+
 
 ## proc01
 
