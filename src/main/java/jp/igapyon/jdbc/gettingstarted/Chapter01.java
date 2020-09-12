@@ -6,24 +6,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * 前提
- * 
- * <p>
- * Environment
- * </p>
- * <ul>
- * <li>Java 11 or later</li>
- * <li>h2 database based</li>
- * <li>Apache Maven based</li>
- * </ul>
- * 
- * <p>
- * Skill
- * </p>
- * <ul>
- * <li>Java basic skill.</li>
- * <li>SQL basic skill.</li>
- * </ul>
+ * chapter 1: データベースに接続 (java.sql.Connection の取得)
  */
 public class Chapter01 {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
