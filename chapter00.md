@@ -27,3 +27,5 @@
     - とりあえず h2 database で話をはじめられるので手っ取り早い。
     - 単純 JDBC Connection の取得のみ話題とし、コネクションプールや JDBC Driver の Type などは端折ります。
 - chapter 2: 
+- chapter X: トランザクション
+- 
