@@ -13,7 +13,7 @@ public class Chapter02 {
         System.err.println("Hello Table: Begin.");
 
         try (var conn = DriverManager.getConnection("jdbc:h2:./target/test")) {
-            proc01(conn);
+            doCreateTable01(conn);
         }
 
         System.err.println("Hello Table: End.");
@@ -25,7 +25,7 @@ public class Chapter02 {
      * @param conn データベース接続。
      * @throws SQLException
      */
-    public static void proc01(Connection conn) throws SQLException {
+    public static void doCreateTable01(Connection conn) throws SQLException {
         System.err.println("trace: Create Table.");
         try (PreparedStatement stmt = conn.prepareStatement("CREATE TABLE IF NOT EXISTS " //
                 + "MyAddressBook (" //

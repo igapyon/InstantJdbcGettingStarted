@@ -12,19 +12,19 @@ import java.sql.SQLException;
  */
 public class Chapter03 {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        System.err.println("Hello Table: Begin.");
+        System.err.println("Hello List Table: Begin.");
 
         try (var conn = DriverManager.getConnection("jdbc:h2:./target/test")) {
-            proc01(conn);
+            doListTable01(conn);
         }
 
-        System.err.println("Hello Table: End.");
+        System.err.println("Hello List Table: End.");
     }
 
     /**
      * @throws SQLException
      */
-    public static void proc01(Connection conn) throws SQLException {
+    public static void doListTable01(Connection conn) throws SQLException {
         System.err.println("trace: List Table.");
         var dbmeta = conn.getMetaData();
         try (ResultSet rs = dbmeta.getTables(null, null, null, new String[] { "TABLE" })) {
