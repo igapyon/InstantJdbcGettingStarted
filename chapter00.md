@@ -12,6 +12,14 @@
 - Build system: Apache Maven (pom.xml + Maven repository)
 - Env: Java の main から開始
 
+## ソースコード
+
+このコンテンツに対応するための [Java + JDBC ソースコード](https://github.com/igapyon/InstantJdbcGettingStarted)が公開されています。
+
+- https://github.com/igapyon/InstantJdbcGettingStarted
+
+実際に動かしてみると、理解を深めやすいことが期待できます。
+
 ## 進め方
 
 - chapter 1: java.sql.Connection の取得
@@ -19,5 +27,3 @@
     - とりあえず h2 database で話をはじめられるので手っ取り早い。
     - 単純 JDBC Connection の取得のみ話題とし、コネクションプールや JDBC Driver の Type などは端折ります。
 - chapter 2: 
-
-
