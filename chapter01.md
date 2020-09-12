@@ -6,7 +6,7 @@
 
 ## この chapter の内容
 
-この chapter では、とにかくさっさと java.sql.Connection インスタンスの取得を目指します。
+この chapter では、とにかくさっさと [java.sql.Connection](https://docs.oracle.com/en/java/javase/11/docs/api/java.sql/java/sql/Connection.html) インスタンスの取得を目指します。
 
 - java.sql.Connection は JDBC を操作するために最初に必要になるものであるためです。
 - 前提にあるように、h2 database の java.sql.Connection を取得します。
@@ -15,9 +15,9 @@
 
 ## proc01
 
-この chapter では、とにかくさっさと java.sql.Connection インスタンスの取得を目指します。
+この chapter では、とにかくさっさと [java.sql.Connection](https://docs.oracle.com/en/java/javase/11/docs/api/java.sql/java/sql/Connection.html) インスタンスの取得を目指します。
 
-- java.sql.Connection インスタンスは、java.sql.DriverManager#getConnection を用いて取得できます。
+- java.sql.Connection インスタンスは、[java.sql.DriverManager](https://docs.oracle.com/en/java/javase/11/docs/api/java.sql/java/sql/DriverManager.html)#getConnection を用いて取得できます。
 - `jdbc:h2:./target/test` は h2 database の JDBC ドライバを用いて `./target` ディレクトリに `test` という名前でデータベースファイルを作成してそのデータベース接続として java.sql.Connection を利用可能にする指定です。
 
 ```java

@@ -11,9 +11,9 @@
 
 説明を簡素にするために、以下の環境を前提にコンテンツを記述します。
 
-- Java Version: Java 11 or later
-- Database: h2 database
-- Build system: Apache Maven (pom.xml + Maven repository)
+- Java Version: [Java 11](https://docs.oracle.com/en/java/javase/11/docs/api/index.html) or later
+- Database: [h2 database](https://www.h2database.com/)
+- Build system: [Apache Maven](https://maven.apache.org/) (pom.xml + Maven repository)
 - Env: Java の main から開始
 
 ### 技術的な前提
@@ -24,6 +24,7 @@
     - 一般的なオペレーティングシステムの基本操作一式を理解していること。
     - コマンドラインからの各種操作ができること。
     - 標準エラー出力を利用できて理解していること。
+    - 義務教育レベルまたはそれ以上の英語読解能力を有すること。
 - Java 経験と知識を持っていること。
     - Java ソースコードを記述および理解できること。
     - Java ソースコードをコンパイルして実行できること。

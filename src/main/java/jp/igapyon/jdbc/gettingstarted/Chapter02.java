@@ -46,7 +46,7 @@ public class Chapter02 {
         try (var conn = DriverManager.getConnection("jdbc:h2:./target/test")) {
             System.err.println("trace: List Table.");
             var dbmeta = conn.getMetaData();
-            try (ResultSet rs = dbmeta.getTables("%", "%", "%", new String[] { "TABLE" })) {
+            try (ResultSet rs = dbmeta.getTables(null, null, null, new String[] { "TABLE" })) {
                 while (rs.next()) {
                     System.err.println(rs.getString("TABLE_NAME"));
                 }
