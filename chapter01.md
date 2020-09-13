@@ -1,4 +1,4 @@
-# Chapter 01
+# chapter 1: データベースに接続 (java.sql.Connection の取得)
 
 ## 前提
 
@@ -13,7 +13,7 @@
 - h2 database ではローカル DB のパスを指定するだけでリレーショナルデータベースがすばやく利用できる機能があり、これが実用的であると同時に JDBC 入門にも好適なのです。
 - ここでは、単純 JDBC Connection の取得のみ話題とし、コネクションプールや JDBC Driver の Type などの話題は端折ります。
 
-## proc01
+## データベース接続 その1
 
 この chapter では、とにかくさっさと [java.sql.Connection](https://docs.oracle.com/en/java/javase/11/docs/api/java.sql/java/sql/Connection.html) インスタンスの取得を目指します。
 
@@ -21,7 +21,7 @@
 - `jdbc:h2:./target/test` は h2 database の JDBC ドライバを用いて `./target` ディレクトリに `test` という名前でデータベースファイルを作成してそのデータベース接続として java.sql.Connection を利用可能にする指定です。
 
 ```java
-    public static void proc01() throws SQLException {
+    public static void doConnect01() throws SQLException {
         System.err.println("trace: Connecting JDBC...");
         try (Connection conn = DriverManager.getConnection("jdbc:h2:./target/test")) {
             System.err.println("trace: JDBC Connected.");
@@ -75,7 +75,7 @@ Hello JDBC: End.
 これで java.sql.Connection インスタンスの取得が成功しました。
 なお java.sql.Connection は close() する必要のあるインスタンスであるため、try(Connection conn = ...) のように自動クローズの記述をしています。
 
-## proc02
+## データベース接続 その2
 
 せっかく java.sql.Connection インスタンスを取得できたので、java.sql.Connection#getMetaData() のメソッドを呼び出してメタ情報を取得して JDBC 接続の情報を表示してみます。
 
@@ -86,7 +86,7 @@ Hello JDBC: End.
 - java.sql.DatabaseMetaData#getJDBCMinorVersion() : JDBCドライバの(ここでは h2 database JDBC ドライバ) のマイナーバージョンを取得します。
 
 ```java
-    public static void proc02() throws SQLException, ClassNotFoundException {
+    public static void doConnect02() throws SQLException {
         System.err.println("trace: Connecting JDBC...");
         try (Connection conn = DriverManager.getConnection("jdbc:h2:./target/test")) {
             System.err.println("trace: JDBC Connected.");
