@@ -6,31 +6,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * 前提
- * 
- * <p>
- * Environment
- * </p>
- * <ul>
- * <li>Java 11 or later</li>
- * <li>h2 database based</li>
- * <li>Apache Maven based</li>
- * </ul>
- * 
- * <p>
- * Skill
- * </p>
- * <ul>
- * <li>Java basic skill.</li>
- * <li>SQL basic skill.</li>
- * </ul>
+ * chapter 1: データベースに接続 (java.sql.Connection の取得)
  */
 public class Chapter01 {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         System.err.println("Hello JDBC: Begin.");
 
-        // proc01();
-        proc02();
+        doConnect01();
+        doConnect02();
 
         System.err.println("Hello JDBC: End.");
     }
@@ -47,7 +30,7 @@ public class Chapter01 {
      * 
      * @throws SQLException SQL例外が発生した場合.
      */
-    public static void proc01() throws SQLException {
+    public static void doConnect01() throws SQLException {
         System.err.println("trace: Connecting JDBC...");
         try (Connection conn = DriverManager.getConnection("jdbc:h2:./target/test")) {
             System.err.println("trace: JDBC Connected.");
@@ -59,8 +42,8 @@ public class Chapter01 {
      * JDBC 接続に成功したので、JDBC の各種情報を取得します。
      * 
      * @throws SQLException SQL例外が発生した場合.
-     */
-    public static void proc02() throws SQLException {
+     */ 
+    public static void doConnect02() throws SQLException {
         System.err.println("trace: Connecting JDBC...");
         try (Connection conn = DriverManager.getConnection("jdbc:h2:./target/test")) {
             System.err.println("trace: JDBC Connected.");
