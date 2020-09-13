@@ -1,17 +1,29 @@
-# Chapter 01
+# chapter 1: データベースに接続 (java.sql.Connection の取得)
 
 ## 前提
 
-- Java 11 or later
-- h2 database based
-- maven based
+このコンテンツは chapter 0 前提のもとに書かれています。
 
-## proc01
+## この chapter の内容
+
+この chapter では、とにかくさっさと [java.sql.Connection](https://docs.oracle.com/en/java/javase/11/docs/api/java.sql/java/sql/Connection.html) インスタンスの取得を目指します。
+
+- java.sql.Connection は JDBC を操作するために最初に必要になるものであるためです。
+- 前提にあるように、h2 database の java.sql.Connection を取得します。
+- h2 database ではローカル DB のパスを指定するだけでリレーショナルデータベースがすばやく利用できる機能があり、これが実用的であると同時に JDBC 入門にも好適なのです。
+- ここでは、単純 JDBC Connection の取得のみ話題とし、コネクションプールや JDBC Driver の Type などの話題は端折ります。
+
+## データベース接続 その1
+
+この chapter では、とにかくさっさと [java.sql.Connection](https://docs.oracle.com/en/java/javase/11/docs/api/java.sql/java/sql/Connection.html) インスタンスの取得を目指します。
+
+- java.sql.Connection インスタンスは、[java.sql.DriverManager](https://docs.oracle.com/en/java/javase/11/docs/api/java.sql/java/sql/DriverManager.html)#getConnection を用いて取得できます。
+- `jdbc:h2:./target/test` は h2 database の JDBC ドライバを用いて `./target` ディレクトリに `test` という名前でデータベースファイルを作成してそのデータベース接続として java.sql.Connection を利用可能にする指定です。
 
 ```java
-    public static void proc01() throws SQLException, ClassNotFoundException {
+    public static void doConnect01() throws SQLException {
         System.err.println("trace: Connecting JDBC...");
-        try (Connection conn = DriverManager.getConnection("jdbc:h2:~/target/test")) {
+        try (Connection conn = DriverManager.getConnection("jdbc:h2:./target/test")) {
             System.err.println("trace: JDBC Connected.");
 
         }
@@ -19,6 +31,8 @@
 ```
 
 ### Execute (without JDBC Driver)
+
+h2 database の JDBC ドライバが利用可能ではない状態で、このプログラムを動かすと `java.sql.SQLException: No suitable driver found` という例外が発生して実行中断します。
 
 ```sh
 Hello JDBC: Begin.
@@ -30,7 +44,9 @@ Exception in thread "main" java.sql.SQLException: No suitable driver found for j
 	at jp.igapyon.jdbc.gettingstarted.Chapter01.main(Chapter01.java:11)
 ```
 
-### Execute (with JDBC Driver)
+### Adding JDBC Driver
+
+h2 database の JDBC ドライバを利用可能にするには `pom.xml` の `<dependencies>` 以下に h2 database のための記述を追加します。
 
 ```xml
 	<dependencies>
@@ -45,6 +61,10 @@ Exception in thread "main" java.sql.SQLException: No suitable driver found for j
 	</dependencies>
 ```
 
+### Execute (with JDBC Driver)
+
+h2 database の JDBC ドライバが利用可能な状態で、このプログラムを動かすと、以下のような標準エラーメッセージが表示されて正常終了します。
+
 ```sh
 Hello JDBC: Begin.
 trace: Connecting JDBC...
@@ -52,12 +72,23 @@ trace: JDBC Connected.
 Hello JDBC: End.
 ```
 
-## proc02
+これで java.sql.Connection インスタンスの取得が成功しました。
+なお java.sql.Connection は close() する必要のあるインスタンスであるため、try(Connection conn = ...) のように自動クローズの記述をしています。
+
+## データベース接続 その2
+
+せっかく java.sql.Connection インスタンスを取得できたので、java.sql.Connection#getMetaData() のメソッドを呼び出してメタ情報を取得して JDBC 接続の情報を表示してみます。
+
+- java.sql.DatabaseMetaData#getDriverName() : JDBC ドライバ名を取得します。
+- java.sql.DatabaseMetaData#getDatabaseMajorVersion() : データベースの(ここでは h2 database) のメジャーバージョンを取得します。
+- java.sql.DatabaseMetaData#getDatabaseMinorVersion() : データベースの(ここでは h2 database) のマイナーバージョンを取得します。
+- java.sql.DatabaseMetaData#getJDBCMajorVersion() : JDBCドライバの(ここでは h2 database JDBC ドライバ) のメジャーバージョンを取得します。
+- java.sql.DatabaseMetaData#getJDBCMinorVersion() : JDBCドライバの(ここでは h2 database JDBC ドライバ) のマイナーバージョンを取得します。
 
 ```java
-    public static void proc02() throws SQLException, ClassNotFoundException {
+    public static void doConnect02() throws SQLException {
         System.err.println("trace: Connecting JDBC...");
-        try (Connection conn = DriverManager.getConnection("jdbc:h2:~/target/test")) {
+        try (Connection conn = DriverManager.getConnection("jdbc:h2:./target/test")) {
             System.err.println("trace: JDBC Connected.");
 
             System.err.println("trace: Show JDBC meta.");
@@ -71,6 +102,8 @@ Hello JDBC: End.
     }
 ```
 
+これの実行結果は以下のようになります。
+
 ```sh
 Hello JDBC: Begin.
 trace: Connecting JDBC...
@@ -83,3 +116,5 @@ trace: Show JDBC meta.
     JDBCMinorVersion: 1
 Hello JDBC: End.
 ```
+
+これ以外にも様々なメソッドが提供されており、必要に応じて データベースや JDBC ドライバの情報を確認する場面があり、そのようなときにこのメソッドが利用されます。
