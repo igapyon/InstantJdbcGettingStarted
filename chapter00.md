@@ -56,7 +56,7 @@
     - 単純 JDBC Connection の取得のみ話題とし、コネクションプールや JDBC Driver の Type などは端折ります。
 - chapter 2: テーブルの作成 (java.sql.PreparedStatement の使用)
     - 次にテーブルを作成します。テーブルがないとそれ以降の説明がしづらいためです。
-- chapter 3: テーブルの確認 (...)
+- chapter 3: テーブル作成の確認 (java.sql.ResultSet の使用)
 - chapter 4: DB接続文字列の変更 (...)
 - chapter 5: レコードの追加 (...)
     - 次にテーブルにレコードを追加します。テーブルにレコードがないと検索の説明がしづらいためです。

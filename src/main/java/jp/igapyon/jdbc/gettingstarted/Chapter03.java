@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * 前提
- * 
- * Chapter01 が完了していること。
+ * 前提: Chapter02 が実行済みで、テーブルが作成済みであること。
  */
 public class Chapter03 {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {

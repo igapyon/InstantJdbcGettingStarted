@@ -21,7 +21,7 @@
         }
 ```
 
-### その後のデータベース処理
+### その後のデータベース処理の例
 
 ```java
     public static void doCreateTable01(Connection conn) throws SQLException {
@@ -56,4 +56,5 @@
     }
 ```
 
+この DDL の実行により、h2 database にテーブルが作成されました。ほんとうにテーブルが作成されたかは、次の chapter で確認します。
 なお、[java.sql.PreparedStatement](https://docs.oracle.com/en/java/javase/11/docs/api/java.sql/java/sql/PreparedStatement.html) はテーブル作成以外にも、様々な DDL, DML の実行のために利用される JDBC にとって重要な API です。
